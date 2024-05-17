@@ -2,7 +2,7 @@
 service: dna-tools
 
 # Name of the container image.
-image: dna-tools
+image: nrbrookes/dna-tools
 
 # Deploy to these servers.
 servers:
