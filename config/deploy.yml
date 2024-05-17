@@ -26,6 +26,9 @@ env:
   secret:
     - RAILS_MASTER_KEY
 
+volumes:
+  - storage:/rails/storage
+
 # Use a different ssh user than root
 # ssh:
 #   user: app
