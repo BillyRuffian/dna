@@ -6,7 +6,14 @@ image: nrbrookes/dna-tools
 
 # Deploy to these servers.
 servers:
-  - 65.109.129.106
+  web:
+    hosts:
+      - 65.109.129.106
+    labels:
+      traefik.http.routers.blog.entrypoints: websecure
+      traefik.http.routers.blog.rule: Host(`dna.billy-ruffian.co.uk`)
+      traefik.http.routers.blog.tls.certresolver: letsencrypt
+
 
 # Credentials for your image host.
 registry:
