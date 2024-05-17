@@ -1,0 +1,9 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+.nav-link > a{
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}

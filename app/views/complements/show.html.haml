@@ -1,0 +1,22 @@
+- content_for :title do
+  DNA Complements
+
+
+= form_with url: '#', data: { controller: 'complement' } do |f|
+  .mb-3.me-3
+    = f.label :sequence, class: 'form-label'
+    = f.text_area :sequence, data: { complement_target: 'inputSequence', action: 'complement#input'}, class: 'form-control'
+
+  .mb-3
+    = f.radio_button :action, 'complement', checked: true, data: { complement_target: 'complementRadio', action: 'complement#input' }, class: 'form-check-label ms-3'
+    = f.label :action_complement, 'Complement', class: 'form-check-label'
+
+    = f.radio_button :action, 'reverse', data: { complement_target: 'reverseRadio', action: 'complement#input' }, class: 'form-check-label ms-3'
+    = f.label :action_reverse, 'Reverse', class: 'form-check-label'
+
+    = f.radio_button :action, 'reverse_complement', data: { complement_target: 'reverseComplementRadio', action: 'complement#input' }, class: 'form-check-label ms-3'
+    = f.label :action_reverse_complement, 'Reverse Complement', class: 'form-check-label'
+
+  .mb-3
+    = f.label :complement, class: 'form-label'
+    = f.text_area :complement, readonly: :true, data: { complement_target: 'outputSequence' }, class: 'form-control'
