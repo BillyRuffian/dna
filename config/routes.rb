@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'codons/show'
   resource :complement, only: [:show]
+  resource :codon, only: [:show] do
+    post :show, on: :member
+  end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
