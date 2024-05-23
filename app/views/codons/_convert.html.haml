@@ -1,2 +1,3 @@
 %turbo-frame#amino-acid-sequence
-  hello from uranus
+  - @codons.each do |codon|
+    %abbr.amino{ title: codon.name, class: "amino-#{codon.tla}" }= codon.tla
