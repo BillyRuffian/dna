@@ -1,3 +1,33 @@
 %turbo-frame#amino-acid-sequence
-  - @codons.each do |codon|
-    %abbr.amino{ title: codon.name, class: "amino-#{codon.tla}" }= codon.tla
+  %h3.pt-3 Codon-amino mapping
+  .d-flex.flex-wrap.align-start
+    - @codons.zip(@aminos).each do |(codon, amino)|
+      .codon-amino-pair.d-flex.flex-column.m-1.p-1
+        .codon= codon
+        .amino{class: "amino-#{amino.tla}"}= amino.tla
+      -# %abbr.amino{ title: amino.name, class: "amino-#{amino.tla}" }= amino.tla
+
+  %h3.pt-3 Amino acid table
+  - @aminos.uniq.sort_by(&:name).then do |aminos_present|
+    %p #{pluralize(aminos_present.count, 'Unique amino acid')} present in the protein
+    %table.table
+      %thead
+        %tr
+          %th Name 
+          %th Three letter abbreviation 
+          %th One letter abbreviation
+      %tbody
+        - aminos_present.each do |a|
+          %tr
+            %td= a.name
+            %td= a.tla 
+            %td= a.ola
+
+  %h3.pt-3 One-letter string
+  %p= @aminos.map(&:ola).join
+
+  %h3.pt-3 Three-letter string
+  %p= @aminos.map(&:tla).join(' ')
+
+  %h3.pt-3 Fully named
+  %p= @aminos.map(&:name).join(', ')
