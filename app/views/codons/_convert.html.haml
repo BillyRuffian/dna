@@ -8,7 +8,7 @@
       -# %abbr.amino{ title: amino.name, class: "amino-#{amino.tla}" }= amino.tla
 
   %h3.pt-3 Amino acid table
-  - @aminos.uniq.sort_by(&:name).then do |aminos_present|
+  - @aminos.reject { |a| a == @stop_codon }.uniq.sort_by(&:name).then do |aminos_present|
     %p #{pluralize(aminos_present.count, 'Unique amino acid')} present in the protein
     %table.table
       %thead
