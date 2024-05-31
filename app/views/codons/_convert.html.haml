@@ -24,10 +24,10 @@
             %td= a.ola
 
   %h3.pt-3 One-letter string
-  %p= @aminos.map(&:ola).join
+  %p= @aminos.reject { |a| a == @stop_codon }.map(&:ola).join
 
   %h3.pt-3 Three-letter string
-  %p= @aminos.map(&:tla).join(' ')
+  %p= @aminos.reject { |a| a == @stop_codon }.map(&:tla).join(' ')
 
   %h3.pt-3 Fully named
-  %p= @aminos.map(&:name).join(', ')
+  %p= @aminos.reject { |a| a == @stop_codon }.map(&:name).join(', ')
