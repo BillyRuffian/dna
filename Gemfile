@@ -75,3 +75,5 @@ gem "erb2haml", "~> 0.1.5"
 gem "thruster", "~> 0.1.4"
 
 gem "kamal", "~> 1.5"
+
+gem "bio", "~> 2.0"

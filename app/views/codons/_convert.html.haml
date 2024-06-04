@@ -1,33 +1,32 @@
 %turbo-frame#amino-acid-sequence
   %h3.pt-3 Codon-amino mapping
   .d-flex.flex-wrap.align-start
-    - @codons.zip(@aminos).each do |(codon, amino)|
+    - @sequence.window_search(3,3) do |codon|
       .codon-amino-pair.d-flex.flex-column.m-1.p-1
         .codon= codon
-        .amino{class: "amino-#{amino.tla}"}= amino.tla
-      -# %abbr.amino{ title: amino.name, class: "amino-#{amino.tla}" }= amino.tla
+        .amino= codon.translate(1, @codon_table).codes.first
 
   %h3.pt-3 Amino acid table
-  - @aminos.reject { |a| a == @stop_codon }.uniq.sort_by(&:name).then do |aminos_present|
+  - @sequence.translate(1, @codon_table).chars.uniq.sort.then do |aminos_present|
     %p #{pluralize(aminos_present.count, 'Unique amino acid')} present in the protein
-    %table.table
-      %thead
+    %table.table.table-bordered
+      %thead.table-light
         %tr
           %th Name 
           %th Three letter abbreviation 
           %th One letter abbreviation
-      %tbody
+      %tbody.table-group-divider
         - aminos_present.each do |a|
           %tr
-            %td= a.name
-            %td= a.tla 
-            %td= a.ola
+            %td= Bio::AminoAcid.name(a)&.capitalize
+            %td= Bio::AminoAcid.one2three(a)
+            %td= a
 
   %h3.pt-3 One-letter string
-  %p= @aminos.reject { |a| a == @stop_codon }.map(&:ola).join
+  %p= @sequence.translate(1, @codon_table)
 
   %h3.pt-3 Three-letter string
-  %p= @aminos.reject { |a| a == @stop_codon }.map(&:tla).join(' ')
+  %p= @sequence.translate(1, @codon_table).codes.compact.join(' ')
 
   %h3.pt-3 Fully named
-  %p= @aminos.reject { |a| a == @stop_codon }.map(&:name).join(', ')
+  %p= @sequence.translate(1, @codon_table).names.compact.join(', ')

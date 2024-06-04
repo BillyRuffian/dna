@@ -5,10 +5,11 @@
   .mb-3
     = f.label :sequence, class: 'form-label'
     = f.text_area :sequence, class: 'form-control'
-    -# = f.radio_button :acid, 'RNA', checked: true, class: 'form-check-label ms-3 me-3'
-    -# = f.label :acid_rna, 'RNA', class: 'form-check-label'
-    -# = f.radio_button :acid, 'DNA', class: 'form-check-label ms-3'
-    -# = f.label :acid_dna, 'DNA', class: 'form-check-label'
+  
+  .mb-3
+    = f.label :codon_table, class: 'form-label'
+    = f.select :codon_table, Bio::CodonTable::DEFINITIONS.to_a.map(&:reverse),{}, class: 'form-select'
+
   = f.submit 'Submit', class: 'btn btn-primary'
 
 
