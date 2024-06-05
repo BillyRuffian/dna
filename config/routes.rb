@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'codons/show'
-  resource :complement, only: [:show]
-  resource :codon do
+  resource :complement, only: [:show] do 
+    post :sequence, on: :member
+  end
+  resource :codon, only: [:show] do
     post :convert, on: :member
   end
   

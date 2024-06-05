@@ -1,0 +1,54 @@
+%turbo-frame#nucleic-acid-sequence
+  %h3.pt-3 Sequences 
+  %table.table.table-bordered
+    %tbody
+      %tr
+        %th.table-light Forward
+        %td.sequence= @sequence
+      %tr 
+        %th.table-light Reverse
+        %td.sequence= @sequence.reverse
+      %tr 
+        %th.table-light Forward complement
+        %td.sequence= @forward_complement
+      %tr 
+        %th.table-light Reverse complement
+        %td.sequence= @reverse_complement
+
+  %h3 Metrics 
+  %table.table.table-bordered
+    %thead.table-light 
+      %tr
+        %th{ colspan: @composition.keys.size } Bases
+      %tr
+        - @composition.keys.map(&:upcase).each do |nucleic_acid|
+          %th= Bio::NucleicAcid::Data::NAMES[nucleic_acid]
+    %tbody.table-group-divider
+      %tr
+        - @composition.keys.each do |nucleic_acid|
+          %td= @composition[nucleic_acid]
+  %table.table.table-bordered
+    %thead.table-light 
+      %tr
+        %th{ colspan: 3 } A/T Ratios
+      %tr
+        %th Content
+        %th Skew
+        %th Percentage
+    %tbody.table-group-divider 
+      %tr 
+        %td= @sequence.at_content
+        %td= @sequence.at_skew
+        %td= number_to_percentage(100 - @sequence.gc_percent, precision: 0)
+    %thead.table-light 
+      %tr
+        %th{ colspan: 3 } G/C Ratios
+      %tr
+        %th Content
+        %th Skew
+        %th Percentage
+    %tbody.table-group-divider 
+      %tr 
+        %td= @sequence.gc_content
+        %td= @sequence.gc_skew
+        %td= number_to_percentage(@sequence.gc_percent, precision: 0)
