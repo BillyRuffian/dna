@@ -1,8 +1,4 @@
 class CodonsController < ApplicationController
-  def show
-    pp params
-  end
-
   def convert
     @sequence = Bio::Sequence::NA.new(params[:sequence])
     @codon_table = params[:codon_table]&.to_i || 1

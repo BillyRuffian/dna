@@ -1,7 +1,4 @@
 class ComplementsController < ApplicationController
-  def show
-  end
-
   def sequence
     @sequence = Bio::Sequence::NA.new(params[:sequence])
     @forward_complement = @sequence.forward_complement
