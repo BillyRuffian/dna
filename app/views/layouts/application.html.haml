@@ -1,5 +1,5 @@
 !!!
-%html
+%html.h-100
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Nucleotides
@@ -8,10 +8,21 @@
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
-  %body.bg-light
+  %body.d-flex.flex-column.h-100.bg-light
     %header.p-3.mb-3.border-bottom.bg-white
       = render partial: 'shared/main_navigation'
-    %main
-      = render partial: 'shared/section_title', locals: {title: yield(:title)}  
+
+    %main.flex-shrink-0
+      = render partial: 'shared/section_title', locals: {title: yield(:title)}
       .container
         = yield
+
+    %footer.footer.py-3.mt-auto.bg-white.border-top
+      .container
+        .d-flex
+          %div
+            &copy;
+            = link_to 'Nigel Brookes-Thomas', 'https://github.com/BillyRuffian/dna'
+            = Time.now.year
+          .ms-auto
+            Only for fun, check your results
