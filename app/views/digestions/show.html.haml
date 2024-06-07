@@ -1,0 +1,17 @@
+- content_for :title do
+  Digestion / Restriction Enzymes
+
+
+= form_with url: digest_digestion_path, data: {turbo_frame: 'nucleic-acid-sequence'} do |f|
+  .mb-3.me-3
+    = f.label :sequence, class: 'form-label'
+    = f.text_area :sequence, class: 'form-control'
+  
+  .mb-3
+    = f.label :codon_table, class: 'form-label'
+    = f.select :codon_table, @enzymes, {}, class: 'form-select'
+
+  .mb-3
+    = f.submit 'Submit', class: 'btn btn-primary'
+
+%turbo-frame#nucleic-acid-sequence

@@ -10,7 +10,9 @@
     = f.label :codon_table, class: 'form-label'
     = f.select :codon_table, Bio::CodonTable::DEFINITIONS.to_a.map(&:reverse),{}, class: 'form-select'
 
-  = f.submit 'Submit', class: 'btn btn-primary'
+
+  .mb-3
+    = f.submit 'Submit', class: 'btn btn-primary'
 
 
 %turbo-frame#amino-acid-sequence

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  get 'codons/show'
   resource :complement, only: [:show] do 
     post :sequence, on: :member
   end
   resource :codon, only: [:show] do
     post :convert, on: :member
+  end
+  resource :digestion, only: :show do 
+    post :digest, on: :member
   end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
