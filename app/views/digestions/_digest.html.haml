@@ -1,0 +1,41 @@
+%turbo-frame#digestion-results
+  %h3.pt-3 Enzyme details
+  %table.table.table-bordered
+    %thead.table-light
+      %tr
+        %th{ rowspan: 2 } Name
+        %th{ rowspan: 2 } Pattern
+        %th{ rowspan: 2 } Sticky / Blunt
+        %th{ colspan: 2 } Primary Strand
+        %th{ colspan: 2 } Complementary Strand
+      %tr
+        %th Cut 1
+        %th Cut 2
+        %th Cut 1
+        %th Cut 2
+    %tbody.table-group-divider
+      %tr
+        %td= @enzyme_name
+        %td.sequence= @enzyme.pattern
+        %td= @enzyme.blunt? ? 'Blunt' : 'Sticky'
+        %td= @enzyme.primary_strand_cut1
+        %td= @enzyme.primary_strand_cut2
+        %td= @enzyme.complementary_strand_cut1
+        %td= @enzyme.complementary_strand_cut2
+
+  %h3.pt-3 Fragments
+  - if @fragments.blank? || @fragments == :no_cuts_found
+    %p No cuts found
+  - else
+    %table.table.table-bordered
+      %thead.table-light
+        %tr
+          %th Fragment
+          %th 5'
+          %th 3'
+      %tbody.table-group-divider
+        - @fragments.each_with_index do |fragment, idx|
+          %tr
+            %th.table-light= idx + 1
+            %td.sequence= fragment.primary
+            %td.sequence= fragment.complement
