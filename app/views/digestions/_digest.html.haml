@@ -24,7 +24,7 @@
         %td= @enzyme.complementary_strand_cut2
 
   %h3.pt-3 Fragments
-  - if @fragments.blank? || @fragments == :no_cuts_found
+  - if @fragments.blank?
     %p No cuts found
   - else
     %table.table.table-bordered

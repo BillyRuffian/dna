@@ -9,6 +9,7 @@ class DigestionsController < ApplicationController
     @enzyme_name = params[:enzyme]
     @enzyme = @enzymes[params[:enzyme]]
     @fragments = Bio::RestrictionEnzyme.cut(@sequence, @enzyme)
+    @fragments = nil if @fragments.is_a?(Symbol)
 
     if turbo_frame_request?
       render partial: 'digest'
