@@ -1,6 +1,10 @@
 - content_for :title do
   Sequence Complements
 
+%p.lead
+  Enter a nucleic acid sequence to get its complements (reverse, forward complement,
+  and reverse complement). The sequence can be DNA or RNA, and it can be upper or lower case.
+
 
 = form_with url: sequence_complement_path, data: {turbo_frame: 'nucleic-acid-sequence'} do |f|
   .mb-3.me-3
