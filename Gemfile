@@ -74,6 +74,6 @@ gem 'haml-rails', '~> 2.1'
 
 gem 'thruster', '~> 0.1.4'
 
-gem 'kamal', '~> 1.5'
+gem 'kamal', '~> 2.0'
 
 gem 'bio', '~> 2.0'
