@@ -77,3 +77,4 @@ gem 'thruster', '~> 0.1.4'
 gem 'kamal', '~> 1.5'
 
 gem 'bio', '~> 2.0'
+gem 'net-ssh', '~> 7.2.0'
