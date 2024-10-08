@@ -36,3 +36,6 @@ volumes:
 
 builder:
   arch: arm64
+
+proxy:
+  app_port: 3000
