@@ -39,3 +39,5 @@ builder:
 
 proxy:
   app_port: 3000
+  host: dna.billy-ruffian.co.uk
+  ssl: true
